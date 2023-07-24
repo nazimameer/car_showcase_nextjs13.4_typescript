@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 
-import { CarCard, CustomFilter, Hero, SearchBar } from "@/components";
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
 import { fetchCars } from "@/utils";
 import { fuels, yearsOfProduction } from "@/constants";
 
@@ -14,7 +14,7 @@ const allCars = await fetchCars({
   model: searchParams.model || '',
 })
 
-const isDataEmpty = !Array.isArray(allCars) || allCars.length <1 || !allCars;
+const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
     <main className="overflow-hidden">
@@ -43,6 +43,11 @@ const isDataEmpty = !Array.isArray(allCars) || allCars.length <1 || !allCars;
                 <CarCard car={car} />
               ))}
             </div>
+                <ShowMore
+                  pageNumber={(searchParams.limit || 10) /10}
+                  isNext={(searchParams.limit || 10) > allCars.length}
+                
+                />
           </section>
         ) : (
           <div className="home__err-container">
