@@ -54,7 +54,7 @@ const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
             <h2 className="text-black text-xl font-bold">Oops, no results</h2>
             <p>{allCars?.message}</p>
           </div>
-        )}
+        )}    
        
       </div>
     </main>
